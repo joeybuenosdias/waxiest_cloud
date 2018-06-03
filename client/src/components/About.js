@@ -1,6 +1,5 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
 
-const About = () => <Header>This is the about page</Header>;
+const About = () => <h1>This is the about page</h1>;
 
 export default About;
