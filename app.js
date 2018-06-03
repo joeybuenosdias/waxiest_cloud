@@ -4,7 +4,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/change-me');
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/waxiest_cloud';
+mongoose.connect(mongoUri);
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, './client/build')));
 
 app.get('*', (request, response) => {
-   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+	response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 module.exports = app;
